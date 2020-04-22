@@ -1,0 +1,14 @@
+{
+    "name": "prgayman/laravel-fcm",
+    "description": "Laravel package send notify using firebase",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ayman Alaiwah",
+            "email": "aymanalaiwah.dev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
