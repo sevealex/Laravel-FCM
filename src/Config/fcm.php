@@ -5,7 +5,7 @@ return [
   /**
    * Firebase Base Url  
    */
-  "base_url" => "POST https://fcm.googleapis.com/fcm/send",
+  "base_url" => "https://fcm.googleapis.com/fcm/send",
 
   /**
    * Firebase Server Key

@@ -4,10 +4,6 @@ namespace Prgayman\Fcm\Support\Request;
 
 abstract class BaseRequest
 {
-  /**
-   * @var \GuzzleHttp\ClientInterface
-   */
-  protected $client;
 
   /**
    * Firebase Request Server Config
@@ -27,7 +23,7 @@ abstract class BaseRequest
    */
   private function loadServerConfig()
   {
-    $this->config = collect(config("fcm"))->only(["server_key", "base_url"]);
+    $this->config = app('config')->get("fcm");
   }
 
   /**
@@ -38,7 +34,7 @@ abstract class BaseRequest
   protected function buildRequestHeader()
   {
     return [
-      "Authorization" => "key=" . $this->config->server_key,
+      "Authorization" => "key=" . $this->config["server_key"],
       'Content-Type' => 'application/json',
     ];
   }

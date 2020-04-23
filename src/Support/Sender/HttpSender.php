@@ -2,6 +2,7 @@
 
 namespace Prgayman\Fcm\Support\Sender;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 
@@ -27,10 +28,10 @@ abstract class HttpSender
    *
    * @param \GuzzleHttp\ClientInterface $client
    */
-  public function __construct(ClientInterface $client)
+  public function __construct()
   {
-    $this->client = $client;
-    $this->url = config("fcm.base_url");
+    $this->client = new Client();
+    $this->url = config('fcm.base_url');
   }
 
   /**

@@ -36,7 +36,7 @@ class FcmSender extends HttpSender
     $response = null;
     if (is_array($to)) {
       foreach ($this->partialTokens($to) as $tokens) {
-        $responsePartial = new DownstreamResponse($this->httpRequest(new Request($to, $options, $notification, $data)), $to);
+        $responsePartial = new DownstreamResponse($this->httpRequest(new Request($tokens, $options, $notification, $data)), $tokens);
         if (!$response) {
           $response = $responsePartial;
         } else {
