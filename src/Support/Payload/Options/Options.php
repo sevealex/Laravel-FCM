@@ -9,7 +9,7 @@ class Options implements Arrayable
 
   protected $optionsBuilder;
 
-  public function __construct(Builder $builder)
+  public function __construct(OptionsBuilder $builder)
   {
     $this->optionsBuilder = $builder;
   }

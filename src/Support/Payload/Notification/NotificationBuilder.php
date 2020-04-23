@@ -2,7 +2,10 @@
 
 namespace Prgayman\Fcm\Support\Payload\Notification;
 
-class Builder
+use Prgayman\Fcm\Support\Payload\Notification\Platform\NotificationAndroidBuilder;
+use Prgayman\Fcm\Support\Payload\Notification\Platform\NotificationIOSBuilder;
+
+class NotificationBuilder
 {
   /**
    * Notification title 
@@ -29,46 +32,11 @@ class Builder
   protected $clickAction;
 
   /**
-   * Notification Icon  Support [Android , Web]
+   * Notification Icon Support [Android , Web]
    * 
    * @var string|null
    */
   protected $icon;
-
-  /**
-   * Notification badge support [IOS]
-   * 
-   * @var string|null
-   */
-  protected $badge;
-
-  /**
-   * Notification android channel Id support [Android]
-   * 
-   * @var string|null
-   */
-  protected $channelId;
-
-  /**
-   * Notification tag support [Android]
-   * 
-   * @var string|null
-   */
-  protected $tag;
-
-  /**
-   * Notification color support [Android]
-   * 
-   * @var string|null
-   */
-  protected $color;
-
-  /**
-   * Notification subtitle support [IOS]
-   * 
-   * @var string|null
-   */
-  protected $subtitle;
 
   /**
    * Notification Body location key
@@ -98,12 +66,31 @@ class Builder
    */
   protected $titleLocArgs;
 
+  /**
+   * Notification Ios Builder
+   * 
+   * @var Prgayman\Fcm\Support\Payload\Notification\Platform\NotificationIOSBuilder
+   */
+  public $ios;
+
+  /**
+   * Notification Android Builder
+   * 
+   * @var Prgayman\Fcm\Support\Payload\Notification\Platform\NotificationAndroidBuilder
+   */
+  public $android;
+
+  public function __construct()
+  {
+    $this->ios = new NotificationIOSBuilder;
+    $this->android = new NotificationAndroidBuilder;
+  }
 
   /**
    * Set title
    * 
    * @param string|null $title
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setTitle($title)
   {
@@ -123,7 +110,7 @@ class Builder
   /**
    * Set body
    * @param string|null $body
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setBody($body)
   {
@@ -143,7 +130,7 @@ class Builder
   /**
    * Set Click Action
    * @param string|null $clickAction
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setClickAction($clickAction)
   {
@@ -163,7 +150,7 @@ class Builder
   /**
    * Set Sound
    * @param string|null $sound
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setSound($sound)
   {
@@ -181,29 +168,9 @@ class Builder
   }
 
   /**
-   * Set Badge
-   * @param string|null $badge
-   * @return Builder
-   */
-  public function setBadge($badge)
-  {
-    $this->badge = $badge;
-    return $this;
-  }
-
-  /**
-   * Get Sound
-   * @return string|null
-   */
-  public function getBadge()
-  {
-    return $this->badge;
-  }
-
-  /**
    * Set Icon
    * @param string|null $icon
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setIcon($icon)
   {
@@ -221,89 +188,9 @@ class Builder
   }
 
   /**
-   * Set Tag
-   * @param string|null $tag
-   * @return Builder
-   */
-  public function setTag($tag)
-  {
-    $this->tag = $tag;
-    return $this;
-  }
-
-  /**
-   * Get Tag
-   * @return string|null
-   */
-  public function getTag()
-  {
-    return $this->tag;
-  }
-
-  /**
-   * Set Android Channel Id
-   * @param string|null $channelId
-   * @return Builder
-   */
-  public function setChannelId($channelId)
-  {
-    $this->channelId = $channelId;
-    return $this;
-  }
-
-  /**
-   * Get Android Channel Id 
-   * @return string|null
-   */
-  public function getChannelId()
-  {
-    return $this->channelId;
-  }
-
-  /**
-   * Set Color hex color
-   * @param string|null $color
-   * @return Builder
-   */
-  public function setColor($color)
-  {
-    $this->color = $color;
-    return $this;
-  }
-
-  /**
-   * Get Color
-   * @return string|null
-   */
-  public function getColor()
-  {
-    return $this->color;
-  }
-
-  /**
-   * Set Sub Title
-   * @param string|null $subtitle
-   * @return Builder
-   */
-  public function setSubtitle($subtitle)
-  {
-    $this->subtitle = $subtitle;
-    return $this;
-  }
-
-  /**
-   * Get Sub Title
-   * @return string|null
-   */
-  public function getSubtitle()
-  {
-    return $this->subtitle;
-  }
-
-  /**
    * Set Body loc key
    * @param string|null $bodyLockey
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setBodyLockey($bodyLockey)
   {
@@ -323,7 +210,7 @@ class Builder
   /**
    * Set Body loc Args
    * @param array|null $bodyLocArgs
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setBodyLocArgs($bodyLocArgs)
   {
@@ -343,7 +230,7 @@ class Builder
   /**
    * Set Title loc key
    * @param string|null $titleLocKey
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setTitleLockey($titleLockey)
   {
@@ -363,7 +250,7 @@ class Builder
   /**
    * Set Title loc Args
    * @param array|null $titleLocArgs
-   * @return Builder
+   * @return NotificationBuilder
    */
   public function setTitleLocArgs($titleLocArgs)
   {

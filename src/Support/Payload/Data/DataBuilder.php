@@ -2,7 +2,7 @@
 
 namespace Prgayman\Fcm\Support\Payload\Data;
 
-class Builder
+class DataBuilder
 {
   /**
    * @var array
@@ -13,7 +13,7 @@ class Builder
   /**
    * add data to existing data.
    * @param array $data
-   * @return Builder
+   * @return DataBuilder
    */
   public function addData(array $data)
   {
@@ -28,7 +28,7 @@ class Builder
    * erase data with new data.
    *
    * @param array $data
-   * @return Builder
+   * @return DataBuilder
    */
   public function setData(array $data)
   {

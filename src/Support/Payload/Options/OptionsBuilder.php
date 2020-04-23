@@ -4,7 +4,7 @@ namespace Prgayman\Fcm\Support\Payload\Options;
 
 use Exception;
 
-class Builder
+class OptionsBuilder
 {
   /**
    * Collapse Key
@@ -51,7 +51,7 @@ class Builder
   /**
    * Set collapseKey
    * @param string|null $collapseKey
-   * @return Builder
+   * @return OptionsBuilder
    */
   public function setCollapseKey($collapseKey)
   {
@@ -71,7 +71,7 @@ class Builder
   /**
    * Set Priority
    * @param string $priority
-   * @return Builder
+   * @return OptionsBuilder
    */
   public function setPriority($priority)
   {
@@ -94,7 +94,7 @@ class Builder
   /**
    * Set Content Available
    * @param bool $contentAvailable
-   * @return Builder
+   * @return OptionsBuilder
    */
   public function setContentAvailable($contentAvailable)
   {
@@ -114,7 +114,7 @@ class Builder
   /**
    * Set Mutable Content
    * @param bool $mutableContent
-   * @return Builder
+   * @return OptionsBuilder
    */
   public function setMutableContent($mutableContent)
   {
@@ -134,7 +134,7 @@ class Builder
   /**
    * Set Time To Live
    * @param int $timeToLive
-   * @return Builder
+   * @return OptionsBuilder
    */
   public function setTimeToLive($timeToLive)
   {
@@ -158,7 +158,7 @@ class Builder
   /**
    * Set Restricted Package Name
    * @param int $restrictedPackageName
-   * @return Builder
+   * @return OptionsBuilder
    */
   public function setRestrictedPackageName($restrictedPackageName)
   {
@@ -178,7 +178,7 @@ class Builder
   /**
    * Set Dry Run
    * @param bool $dryRun
-   * @return Builder
+   * @return OptionsBuilder
    */
   public function setDryRun($dryRun)
   {
