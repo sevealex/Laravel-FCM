@@ -20,4 +20,9 @@ class Fcm
   public function __construct()
   {
   }
+
+  public function get()
+  {
+    return "ayman";
+  }
 }

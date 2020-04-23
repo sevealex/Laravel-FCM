@@ -13,6 +13,9 @@ class FcmServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind('prgayman.fcm', function () {
+            return new Fcm();
+        });
     }
 
     /**
