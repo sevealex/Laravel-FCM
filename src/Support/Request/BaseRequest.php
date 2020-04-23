@@ -27,8 +27,7 @@ abstract class BaseRequest
    */
   private function loadServerConfig()
   {
-    $config = collect(config("fcm"));
-    $this->config = $config->only(["server_key", "base_url"]);
+    $this->config = collect(config("fcm"))->only(["server_key", "base_url"]);
   }
 
   /**
