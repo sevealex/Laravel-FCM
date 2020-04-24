@@ -71,3 +71,85 @@ FIREBASE_SERVER_KEY=my_server_key
 To get these keys, you must create a new application on the [firebase cloud messaging console](https://console.firebase.google.com/).
 
 After the creation of your application on Firebase, you can find keys in `project settings -> cloud messaging`.
+
+## Basic Usage
+
+Two types of messages can be sent using Laravel-FCM:
+
+- Notification messages, sometimes thought of as "display messages"
+- Data messages, which are handled by the client app
+
+More information is available in the [official documentation](https://firebase.google.com/docs/cloud-messaging/concept-options).
+
+
+### Downstream Messages
+
+A downstream message is a notification message, a data message, or both, that you send to a target device or to multiple target devices using its registration_Ids.
+
+The following use statements are required for the examples below:
+
+```php
+use Prgayman\Fcm\Support\Payload\Data\DataBuilder;
+use Prgayman\Fcm\Support\Payload\Notification\NotificationBuilder;
+use Prgayman\Fcm\Support\Payload\Options\OptionsBuilder;
+use PFCM;
+```
+
+#### Sending a Downstream Message to a Device
+
+```php
+
+ // Create Notification Builder 
+ $notifyBuilder = new NotificationBuilder;
+ $notifyBuilder->setTitle("Notification Title");
+ $notifyBuilder->setBody("Notification Body");
+ $notifyBuilder->ios->setSubtitle("Sub title");
+ $notifyBuilder->setImage("image_url");
+ $notifyBuild = $notifyBuilder->build();
+
+// Create Data Builder
+$dataBuilder = new DataBuilder;
+$dataBuilder->setData(["type" => "VIEW_PRODUCT"]);
+$dataBuilder->addData(["type_id" => 1]);
+$dataBuild = $dataBuilder->build();
+
+// Create Options Builder 
+$optionsBuilder = new OptionsBuilder;
+$optionsBuilder->setPriority("high"); // [normal|high]
+$optionsBuilder->setContentAvailable(true);
+$optionsBuild = $optionsBuilder->build();
+
+// @var array|string
+$tokens =[];  
+
+// Send Notification 
+$fcm = Fcm::sendNotification($tokens,$notifyBuild,$optionsBuild); // $optionsBuild (optional)
+
+// Send Notification  With Data
+$fcm = Fcm::sendNotificationWithData($tokens,$notifyBuild,$dataBuild,$optionsBuild); // $optionsBuild (optional)
+
+// Send  Data
+$fcm = Fcm::sendData($tokens,$dataBuild,$optionsBuild); // $optionsBuild (optional)
+
+// return in number success send notification
+$numberSuccess = $fcm->numberSuccess();
+
+// return in number failure send notification
+$numberFailure = $fcm->numberFailure();
+
+// return in number modification send notification
+$numberModification = $fcm->numberModification();
+
+// return Array - you must remove all this tokens in your database
+$tokensToDelete = $fcm->tokensToDelete();
+
+// return Array (key : oldToken, value : new token - you must change the token in your database)
+$tokensToModify = $fcm->tokensToModify();
+
+// return Array - you should try to resend the message to the tokens in the array
+$tokensToRetry= $fcm->tokensToRetry();
+
+// return Array (key:token, value:error) - in production you should remove from your database the tokens
+$tokensWithError = $fcm->tokensWithError();
+
+```
