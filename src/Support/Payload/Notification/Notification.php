@@ -28,7 +28,8 @@ class Notification implements Arrayable
       'title_loc_key' => $this->notifyBuilder->getTitleLockey(),
       'title_loc_args' => $this->notifyBuilder->getTitleLocArgs(),
       'subtitle' => $this->notifyBuilder->ios->getSubtitle(),
-      "badge" => $this->notifyBuilder->ios->getBadge()
+      "badge" => $this->notifyBuilder->ios->getBadge(),
+      "image" =>  $this->notifyBuilder->getImage(),
     ]);
   }
 }

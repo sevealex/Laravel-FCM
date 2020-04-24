@@ -67,6 +67,13 @@ class NotificationBuilder
   protected $titleLocArgs;
 
   /**
+   * Notification Image
+   * 
+   * @var string|null
+   */
+  protected $image;
+
+  /**
    * Notification Ios Builder
    * 
    * @var Prgayman\Fcm\Support\Payload\Notification\Platform\NotificationIOSBuilder
@@ -266,6 +273,28 @@ class NotificationBuilder
   {
     return $this->titleLocArgs;
   }
+
+
+  /**
+   * Set Image
+   * @param string|null $image
+   * @return NotificationBuilder
+   */
+  public function setImage($image)
+  {
+    $this->image = $image;
+    return $this;
+  }
+
+  /**
+   * Get image
+   * @return array|null
+   */
+  public function getImage()
+  {
+    return $this->image;
+  }
+
 
   /**
    * Build Payload Notification 
