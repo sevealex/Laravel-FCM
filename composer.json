@@ -1,27 +1,28 @@
 {
-    "name": "prgayman/laravel-fcm",
-    "description": "Laravel package send notify using firebase",
-    "keywords": [
-        "prgayman",
-        "laravel",
-        "notify",
-        "firebase",
-        "push notification",
-        "notification"
-    ],
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Ayman Alaiwah",
-            "email": "aymanalaiwah.dev@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Prgayman\\Fcm\\": "src/"
-        }
-    },
-    "minimum-stability": "dev",
-    "require": {}
+  "name": "prgayman/laravel-fcm",
+  "description": "Laravel package send notify using firebase",
+  "version": "1.0.0",
+  "keywords": [
+    "prgayman",
+    "laravel",
+    "notify",
+    "firebase",
+    "push notification",
+    "notification"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ayman Alaiwah",
+      "email": "aymanalaiwah.dev@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Prgayman\\Fcm\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {}
 }

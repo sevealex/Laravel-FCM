@@ -62,7 +62,7 @@ For facades, add the following lines in the section "Create The Application" . F
 class_alias(\Prgayman\Fcm\Facades\Fcm::class, 'PFCM');
 ```
 
-Copy the config file `fcm.php` manually from the directory `/vendor/prgayman/Laravel FCM/Config` to the directory `/config` (you may need to create this directory).
+Copy the config file `fcm.php` manually from the directory `/vendor/prgayman/laravel-fcm/Config` to the directory `/config` (you may need to create this directory).
 
 ### Package Configuration
 
@@ -83,8 +83,8 @@ Two types of messages can be sent using Laravel FCM:
 - Notification messages, sometimes thought of as "display messages"
 - Data messages, which are handled by the client app
 
-
 First, add the Prgayman\Fcm\Traits\HasFcm trait to your User model(s):
+
 ```php
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -100,58 +100,58 @@ $user = User::find(1);
 /**
  * Get all fcm tokens this user
  * @param string $locale (optional)
- * 
+ *
  * @return array
  */
-$user->getFcmTokens(); 
+$user->getFcmTokens();
 
 /**
  * Get ios fcm tokens this user
  * @param string $locale (optional)
- * 
+ *
  * @return array
  */
-$user->getFcmIosTokens(); 
+$user->getFcmIosTokens();
 
 /**
  * Get android fcm tokens this user
  * @param string $locale (optional)
- * 
+ *
  * @return array
  */
-$user->getAndroidTokens(); 
+$user->getAndroidTokens();
 
 /**
  * Get web fcm tokens this user
  * @param string $locale (optional)
- * 
+ *
  * @return array
  */
-$user->getWebTokens(); 
+$user->getWebTokens();
 
 /**
  * Create Or Update user fcm Token this user
  * @param string $token
  * @param string $platform (optional)
  * @param string $locale (optional)
- * 
+ *
  * @return Prgayman\Fcm\Models\FcmToken
  */
 $fcmToken = $user->createOrUpdate($token, "android", app()->getLocale()));
 
 ```
 
-
 ### Prgayman\Fcm\Models\FcmToken Model Usage
+
 ```php
 
 use Prgayman\Fcm\Models\FcmToken;
 
 $user = User::find(1);
 /**
- * Get all fcm tokens 
+ * Get all fcm tokens
  * @param string $locale (optional)
- * 
+ *
  * @return array
  */
 $fcmToken = FcmToken::getTokens("en");
@@ -159,7 +159,7 @@ $fcmToken = FcmToken::getTokens("en");
 /**
  * Get Platform Ios Tokens
  * @param string $locale (optional)
- * 
+ *
  * @return array
  */
 $fcmToken = FcmToken::getIosTokens();
@@ -167,7 +167,7 @@ $fcmToken = FcmToken::getIosTokens();
 /**
  * Get Platform android Tokens
  * @param string $locale (optional)
- * 
+ *
  * @return array
  */
 $fcmToken = FcmToken::getAndroidTokens();
@@ -175,7 +175,7 @@ $fcmToken = FcmToken::getAndroidTokens();
 /**
  * Get Platform web Tokens
  * @param string $locale (optional)
- * 
+ *
  * @return array
  */
 $fcmToken = FcmToken::getWebTokens();
@@ -187,7 +187,7 @@ $fcmToken = FcmToken::getWebTokens();
  * @param int $model_id (optional)
  * @param string $platform (optional)
  * @param string $locale (optional)
- * 
+ *
  * @return Prgayman\Fcm\Models\FcmToken
  */
 $fcmToken = FcmToken::createOrUpdate($token, get_class($user), $user->id );
@@ -211,7 +211,7 @@ use PFCM;
 
 ```php
 
-// Create Notification Builder 
+// Create Notification Builder
 $notifyBuilder = new NotificationBuilder;
 $notifyBuilder->setTitle("Notification Title");
 $notifyBuilder->setBody("Notification Body");
@@ -225,16 +225,16 @@ $dataBuilder->setData(["type" => "VIEW_PRODUCT"]);
 $dataBuilder->addData(["type_id" => 1]);
 $dataBuild = $dataBuilder->build();
 
-// Create Options Builder 
+// Create Options Builder
 $optionsBuilder = new OptionsBuilder;
 $optionsBuilder->setPriority("high"); // [normal|high]
 $optionsBuilder->setContentAvailable(true);
 $optionsBuild = $optionsBuilder->build();
 
 // @var array|string
-$tokens =[];  
+$tokens =[];
 
-// Send Notification 
+// Send Notification
 $fcm = Fcm::sendNotification($tokens,$notifyBuild,$optionsBuild); // $optionsBuild (optional)
 
 // Send Notification  With Data
