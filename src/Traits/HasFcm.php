@@ -15,37 +15,65 @@ trait HasFcm
 
   /**
    * Get All tokens user
+   * @param string $locale
+   * 
    * @return array
    */
-  public function getFcmTokens()
+  public function getFcmTokens($locale = null)
   {
-    return $this->fcmTokens->pluck("token")->toArray();
+    return $this->fcmTokens->where(function ($query) use ($locale) {
+      if ($locale) {
+        $query->where("locale", $locale);
+      }
+    })->pluck("token")->toArray();
   }
 
   /**
    * Get All Ios tokens user
+   * @param string $locale
+   * 
    * @return array
    */
-  public function getFcmIosTokens()
+  public function getFcmIosTokens($locale = null)
   {
-    return $this->fcmTokens->where("platform", FcmToken::PLATFORM_IOS)->pluck("token")->toArray();
+    return $this->fcmTokens->where(function ($query) use ($locale) {
+      if ($locale) {
+        $query->where("locale", $locale);
+      }
+    })->where("platform", FcmToken::PLATFORM_IOS)->pluck("token")->toArray();
   }
 
   /**
    * Get All Android tokens user
+   * @param string $locale
+   * 
    * @return array
    */
-  public function getFcmAndroidTokens()
+  public function getFcmAndroidTokens($locale = null)
   {
-    return $this->fcmTokens->where("platform", FcmToken::PLATFORM_ANDROID)->pluck("token")->toArray();
+    return $this->fcmTokens->where(function ($query) use ($locale) {
+      if ($locale) {
+        $query->where("locale", $locale);
+      }
+    })->where("platform", FcmToken::PLATFORM_ANDROID)->pluck("token")->toArray();
   }
 
   /**
    * Get All Ios Web user
+   * @param string $locale
+   * 
    * @return array
    */
-  public function getFcmWebTokens()
+  public function getFcmWebTokens($locale = null)
   {
-    return $this->fcmTokens->where("platform", FcmToken::PLATFORM_WEB)->pluck("token")->toArray();
+    return $this->fcmTokens->where(function ($query) use ($locale) {
+      if ($locale) {
+        $query->where("locale", $locale);
+      }
+    })->where("platform", FcmToken::PLATFORM_WEB)->pluck("token")->toArray();
   }
+
+  // public function fcmCreateOrUpdate($token, $platform = null, $locale = null)
+  // {
+  // }
 }

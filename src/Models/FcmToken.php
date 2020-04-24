@@ -15,29 +15,62 @@ class FcmToken extends Model
 
 
     /**
-     * Get Platform Ios Tokens
+     * Get Tokens
+     * @param string $locale
+     * 
      * @return array
      */
-    public function getIosTokens()
+    public function getTokens($locale = null)
     {
-        return static::where("platform", self::PLATFORM_IOS)->pluck("token")->toArray();
+        return static::where(function ($query) use ($locale) {
+            if ($locale) {
+                $query->where("locale", $locale);
+            }
+        })->pluck("token")->toArray();
+    }
+
+    /**
+     * Get Platform Ios Tokens
+     * @param string $locale
+     * 
+     * @return array
+     */
+    public function getIosTokens($locale = null)
+    {
+        return static::where(function ($query) use ($locale) {
+            if ($locale) {
+                $query->where("locale", $locale);
+            }
+        })->where("platform", self::PLATFORM_IOS)->pluck("token")->toArray();
     }
 
     /**
      * Get Platform Android Tokens
+     * @param string $locale
+     * 
      * @return array
      */
-    public function getAndroidTokens()
+    public function getAndroidTokens($locale = null)
     {
-        return static::where("platform", self::PLATFORM_ANDROID)->pluck("token")->toArray();
+        return static::where(function ($query) use ($locale) {
+            if ($locale) {
+                $query->where("locale", $locale);
+            }
+        })->where("platform", self::PLATFORM_ANDROID)->pluck("token")->toArray();
     }
 
     /**
      * Get Platform Web Tokens
+     * @param string $locale
+     * 
      * @return array
      */
-    public function getWebTokens()
+    public function getWebTokens($locale = null)
     {
-        return static::where("platform", self::PLATFORM_WEB)->pluck("token")->toArray();
+        return static::where(function ($query) use ($locale) {
+            if ($locale) {
+                $query->where("locale", $locale);
+            }
+        })->where("platform", self::PLATFORM_WEB)->pluck("token")->toArray();
     }
 }
