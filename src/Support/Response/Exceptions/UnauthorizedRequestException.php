@@ -19,6 +19,6 @@ class UnauthorizedRequestException extends Exception
   {
     $code = $response->getStatusCode();
 
-    parent::__construct('FIREBASE_SERVER_KEY are invalid or is not set key FIREBASE_SERVER_KEY in env file', $code);
+    parent::__construct('Server Key are invalid or is not set key FIREBASE_SERVER_KEY in env file', $code);
   }
 }

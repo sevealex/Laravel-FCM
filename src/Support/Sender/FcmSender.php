@@ -29,9 +29,11 @@ class FcmSender extends HttpSender
     Notification $notification = null,
     Data $data = null
   ) {
+
     if (!$to) {
       throw new Exception('to is not valid must by array or string');
     }
+
 
     $response = null;
     if (is_array($to)) {
@@ -49,7 +51,11 @@ class FcmSender extends HttpSender
     return $response;
   }
 
-
+  /**
+   * Array Chunk Tokens
+   * @param array $tokens
+   * @return array
+   */
   protected function partialTokens($tokens)
   {
     return array_chunk($tokens, self::MAX_TOKEN_PER_REQUEST, false);
