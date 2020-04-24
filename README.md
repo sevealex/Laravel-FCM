@@ -83,8 +83,6 @@ Two types of messages can be sent using Laravel FCM:
 - Notification messages, sometimes thought of as "display messages"
 - Data messages, which are handled by the client app
 
-More information is available in the [official documentation](https://firebase.google.com/docs/cloud-messaging/concept-options).
-
 
 First, add the Prgayman\Fcm\Traits\HasFcm trait to your User model(s):
 ```php
@@ -144,7 +142,7 @@ $fcmToken = $user->createOrUpdate($token, "android", app()->getLocale()));
 ```
 
 
-### Prgayman\Fcm\Models\FcmToken Usage
+### Prgayman\Fcm\Models\FcmToken Model Usage
 ```php
 
 use Prgayman\Fcm\Models\FcmToken;
