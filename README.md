@@ -86,6 +86,64 @@ Two types of messages can be sent using Laravel FCM:
 More information is available in the [official documentation](https://firebase.google.com/docs/cloud-messaging/concept-options).
 
 
+First, add the Prgayman\Fcm\Traits\HasFcm trait to your User model(s):
+```php
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Prgayman\Fcm\Traits\HasFcm;
+
+class User extends Authenticatable
+{
+    use HasFcm;
+}
+
+$user = User::find(1);
+
+/**
+ * Get all fcm tokens
+ * @param string $locale (optional)
+ * 
+ * @return array
+ */
+$user->getFcmTokens(); 
+
+/**
+ * Get ios fcm tokens
+ * @param string $locale (optional)
+ * 
+ * @return array
+ */
+$user->getFcmIosTokens(); 
+
+/**
+ * Get android fcm tokens
+ * @param string $locale (optional)
+ * 
+ * @return array
+ */
+$user->getAndroidTokens(); 
+
+/**
+ * Get web fcm tokens
+ * @param string $locale (optional)
+ * 
+ * @return array
+ */
+$user->getWebTokens(); 
+
+/**
+ * Create Or Update user fcm Token
+ * @param string $token
+ * @param string $platform (optional)
+ * @param string $locale (optional)
+ * 
+ * @return Prgayman\Fcm\Models\FcmToken
+ */
+$fcmToken = $user->createOrUpdate($token, "android", app()->getLocale()));
+
+
+```
+
 ### Downstream Messages
 
 A downstream message is a notification message, a data message, or both, that you send to a target device or to multiple target devices using its registration_Ids.

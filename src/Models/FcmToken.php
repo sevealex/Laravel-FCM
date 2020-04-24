@@ -21,8 +21,10 @@ class FcmToken extends Model
      * 
      * @return array
      */
+
     public function getTokens($locale = null)
     {
+
         return static::where(function ($query) use ($locale) {
             if ($locale) {
                 $query->where("locale", $locale);
