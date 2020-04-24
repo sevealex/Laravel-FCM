@@ -13,6 +13,7 @@ class FcmToken extends Model
     const PLATFORM_ANDROID = "android";
     const PLATFORM_WEB = "web";
 
+    protected $fillable = ["platform", "model_type", "model_id", "locale", "token"];
 
     /**
      * Get Tokens
@@ -72,5 +73,34 @@ class FcmToken extends Model
                 $query->where("locale", $locale);
             }
         })->where("platform", self::PLATFORM_WEB)->pluck("token")->toArray();
+    }
+
+    /**
+     * Create Or Update Token
+     * @param string $token
+     * @param Illuminate\Database\Eloquent\Model $model_type
+     * @param int $model_id
+     * @param string $platform
+     * @param string $locale
+     * 
+     * @return mixed
+     */
+    public static function createOrUpdate($token, $model_type = null, $model_id = null, $platform = null, $locale = null)
+    {
+        $fcmToken = static::where("token", $token)->where(function ($query) use ($model_type) {
+            if ($model_type) {
+                $query->where("model_type", $model_type);
+            }
+        })->first();
+        if (!$fcmToken) {
+            $fcmToken = new static;
+            $fcmToken->model_type = $model_type;
+            $fcmToken->model_id = $model_id;
+            $fcmToken->token = $token;
+        }
+        $fcmToken->platform = $platform;
+        $fcmToken->locale = $locale;
+        $fcmToken->save();
+        return $fcmToken;
     }
 }

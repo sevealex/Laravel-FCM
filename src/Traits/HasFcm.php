@@ -73,7 +73,18 @@ trait HasFcm
     })->where("platform", FcmToken::PLATFORM_WEB)->pluck("token")->toArray();
   }
 
-  // public function fcmCreateOrUpdate($token, $platform = null, $locale = null)
-  // {
-  // }
+  public function fcmCreateOrUpdate($token, $platform = null, $locale = null)
+  {
+    $fcmToken = $this->fcmTokens->where("token", $token)->where("model_type", get_class($this))->first();
+    if (!$fcmToken) {
+      $fcmToken = new FcmToken;
+      $fcmToken->model_type = get_class($this);
+      $fcmToken->model_id = $this->id;
+      $fcmToken->token = $token;
+    }
+    $fcmToken->platform = $platform;
+    $fcmToken->locale = $locale;
+    $fcmToken->save();
+    return $fcmToken;
+  }
 }

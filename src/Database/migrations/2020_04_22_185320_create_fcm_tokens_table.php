@@ -22,9 +22,8 @@ class CreateFcmTokensTable extends Migration
                 FcmToken::PLATFORM_IOS,
                 FcmToken::PLATFORM_WEB
             ])->nullable();
-            $table->string("model_type");
-            $table->unsignedBigInteger("model_id");
-            $table->unique("token", "model_type");
+            $table->string("model_type")->nullable();
+            $table->unsignedBigInteger("model_id")->nullable();
             $table->string("locale")->nullable();
 
             $table->timestamps();
