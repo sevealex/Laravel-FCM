@@ -2,6 +2,7 @@
 
 namespace Prgayman\Fcm\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class FcmToken extends Model
@@ -85,7 +86,7 @@ class FcmToken extends Model
      * @param string $platform
      * @param string $locale
      * 
-     * @return mixed
+     * @return Prgayman\Fcm\Models\FcmToken
      */
     public static function createOrUpdate($token, $model_type = null, $model_id = null, $platform = null, $locale = null)
     {

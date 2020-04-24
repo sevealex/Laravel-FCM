@@ -90,17 +90,17 @@ First, add the Prgayman\Fcm\Traits\HasFcm trait to your User model(s):
 ```php
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Prgayman\Fcm\Traits\HasFcm;
+use Prgayman\Fcm\Traits\HasFcm; // Add this line
 
 class User extends Authenticatable
 {
-    use HasFcm;
+    use HasFcm; // Add this line
 }
 
 $user = User::find(1);
 
 /**
- * Get all fcm tokens
+ * Get all fcm tokens this user
  * @param string $locale (optional)
  * 
  * @return array
@@ -108,7 +108,7 @@ $user = User::find(1);
 $user->getFcmTokens(); 
 
 /**
- * Get ios fcm tokens
+ * Get ios fcm tokens this user
  * @param string $locale (optional)
  * 
  * @return array
@@ -116,7 +116,7 @@ $user->getFcmTokens();
 $user->getFcmIosTokens(); 
 
 /**
- * Get android fcm tokens
+ * Get android fcm tokens this user
  * @param string $locale (optional)
  * 
  * @return array
@@ -124,7 +124,7 @@ $user->getFcmIosTokens();
 $user->getAndroidTokens(); 
 
 /**
- * Get web fcm tokens
+ * Get web fcm tokens this user
  * @param string $locale (optional)
  * 
  * @return array
@@ -132,7 +132,7 @@ $user->getAndroidTokens();
 $user->getWebTokens(); 
 
 /**
- * Create Or Update user fcm Token
+ * Create Or Update user fcm Token this user
  * @param string $token
  * @param string $platform (optional)
  * @param string $locale (optional)
@@ -141,6 +141,58 @@ $user->getWebTokens();
  */
 $fcmToken = $user->createOrUpdate($token, "android", app()->getLocale()));
 
+```
+
+
+### Prgayman\Fcm\Models\FcmToken Usage
+```php
+
+use Prgayman\Fcm\Models\FcmToken;
+
+$user = User::find(1);
+/**
+ * Get all fcm tokens 
+ * @param string $locale (optional)
+ * 
+ * @return array
+ */
+$fcmToken = FcmToken::getTokens("en");
+
+/**
+ * Get Platform Ios Tokens
+ * @param string $locale (optional)
+ * 
+ * @return array
+ */
+$fcmToken = FcmToken::getIosTokens();
+
+/**
+ * Get Platform android Tokens
+ * @param string $locale (optional)
+ * 
+ * @return array
+ */
+$fcmToken = FcmToken::getAndroidTokens();
+
+/**
+ * Get Platform web Tokens
+ * @param string $locale (optional)
+ * 
+ * @return array
+ */
+$fcmToken = FcmToken::getWebTokens();
+
+/**
+ * Create Or Update Token
+ * @param string $token
+ * @param Illuminate\Database\Eloquent\Model $model_type (optional)
+ * @param int $model_id (optional)
+ * @param string $platform (optional)
+ * @param string $locale (optional)
+ * 
+ * @return Prgayman\Fcm\Models\FcmToken
+ */
+$fcmToken = FcmToken::createOrUpdate($token, get_class($user), $user->id );
 
 ```
 
