@@ -99,13 +99,13 @@ use PFCM;
 
 ```php
 
- // Create Notification Builder 
- $notifyBuilder = new NotificationBuilder;
- $notifyBuilder->setTitle("Notification Title");
- $notifyBuilder->setBody("Notification Body");
- $notifyBuilder->ios->setSubtitle("Sub title");
- $notifyBuilder->setImage("image_url");
- $notifyBuild = $notifyBuilder->build();
+// Create Notification Builder 
+$notifyBuilder = new NotificationBuilder;
+$notifyBuilder->setTitle("Notification Title");
+$notifyBuilder->setBody("Notification Body");
+$notifyBuilder->ios->setSubtitle("Sub title");
+$notifyBuilder->setImage("image_url");
+$notifyBuild = $notifyBuilder->build();
 
 // Create Data Builder
 $dataBuilder = new DataBuilder;
@@ -153,3 +153,9 @@ $tokensToRetry= $fcm->tokensToRetry();
 $tokensWithError = $fcm->tokensWithError();
 
 ```
+
+## Licence
+
+This library is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+Some of this documentation is coming from the official documentation. You can find it completely on the [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) Website.
