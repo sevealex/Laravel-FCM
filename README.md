@@ -12,7 +12,7 @@ It currently **only supports HTTP protocol** for :
 
 ## Installation
 
-To get the latest version of Laravel-FCM on your project, require it from "composer":
+To get the latest version of Laravel FCM on your project, require it from "composer":
 
     $ composer require prgayman/laravel-fcm
 
@@ -42,6 +42,10 @@ Publish the package config file using the following command:
 
     $ php artisan vendor:publish --provider="Prgayman\Fcm\FcmServiceProvider"
 
+migrate fcm_tokens using the following command:
+
+    $ php artisan migrate
+
 ### Lumen
 
 Register the provider in your bootstrap app file `boostrap/app.php`
@@ -58,7 +62,7 @@ For facades, add the following lines in the section "Create The Application" . F
 class_alias(\Prgayman\Fcm\Facades\Fcm::class, 'PFCM');
 ```
 
-Copy the config file `fcm.php` manually from the directory `/vendor/prgayman/laravel-fcm/Config` to the directory `/config` (you may need to create this directory).
+Copy the config file `fcm.php` manually from the directory `/vendor/prgayman/Laravel FCM/Config` to the directory `/config` (you may need to create this directory).
 
 ### Package Configuration
 
@@ -74,7 +78,7 @@ After the creation of your application on Firebase, you can find keys in `projec
 
 ## Basic Usage
 
-Two types of messages can be sent using Laravel-FCM:
+Two types of messages can be sent using Laravel FCM:
 
 - Notification messages, sometimes thought of as "display messages"
 - Data messages, which are handled by the client app
