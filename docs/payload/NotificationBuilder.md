@@ -131,10 +131,77 @@ $notifyBuilder->getTitleLocArgs();
 $notifyBuilder->setImage($imageUrl);
 
 /**
- * Get IMage 
+ * Get Image 
  * @return string
  */
 $notifyBuilder->getImage();
+
+
+/**
+ * Set Android Channel Id
+ * @param string $channelId
+ * @return NotificationAndroidBuilder
+ */
+$notifyBuilder->android->setChannelId($channelId);
+
+/**
+ * Get Channel Id 
+ * @return string
+ */
+$notifyBuilder->android->getChannelId();
+
+/**
+ * Set Tag
+ * @param string $tag
+ * @return NotificationAndroidBuilder
+ */
+$notifyBuilder->android->setTag($tag);
+
+/**
+ * Get Tag
+ * @return string
+ */
+$notifyBuilder->android->getTag();
+
+/**
+ * Set Color
+ * @param string $color
+ * @return NotificationAndroidBuilder
+ */
+$notifyBuilder->android->setColor($color);
+
+/**
+ * Get Color
+ * @return string
+ */
+$notifyBuilder->android->getColor();
+
+
+/**
+ * Set Badge
+ * @param string $badge
+ * @return NotificationIOSBuilder
+ */
+$notifyBuilder->ios->setBadge($badge);
+
+/**
+ * Get Badge
+ * @return string
+ */
+$notifyBuilder->ios->getBadge();
+
+/**
+ * Set subtitle
+ * @param string $subtitle
+ * @return NotificationIOSBuilder
+ */
+$notifyBuilder->ios->setSubtitle($subtitle);
+
+/**
+ * Get subtitle
+ * @return string
+ */
+$notifyBuilder->ios->getSubtitle();
 
 /**
  * Build Payload Notification 
