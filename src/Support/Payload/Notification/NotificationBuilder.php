@@ -15,7 +15,7 @@ class NotificationBuilder
 
   /**
    * Notification Body 
-   * @var string|null
+   * @var string|null 
    */
   protected $body;
 
