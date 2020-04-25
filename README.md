@@ -76,12 +76,23 @@ To get these keys, you must create a new application on the [firebase cloud mess
 
 After the creation of your application on Firebase, you can find keys in `project settings -> cloud messaging`.
 
+## Documentation
+
+See the [Documentation](https://github.com/prgayman/laravel-fcm/wiki) for detailed installation and usage instructions.
+
+#### Payload Builder
+ - [NotificationBuilder](https://github.com/prgayman/laravel-fcm/wiki/NotificationBuilder)
+ - [OptionsBuilder](https://github.com/prgayman/laravel-fcm/wiki/OptionsBuilder)
+ - [DataBuilder](https://github.com/prgayman/laravel-fcm/wiki/DataBuilder)
+
+
 ## Basic Usage
 
 Two types of messages can be sent using Laravel FCM:
 
 - Notification messages, sometimes thought of as "display messages"
 - Data messages, which are handled by the client app
+
 
 First, add the Prgayman\Fcm\Traits\HasFcm trait to your User model(s):
 
