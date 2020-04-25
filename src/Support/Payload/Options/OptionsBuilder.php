@@ -20,7 +20,7 @@ class OptionsBuilder
 
   /**
    * Content Available
-   * @var boolean
+   * @var boolean 
    */
   protected $contentAvailable = false;
 
@@ -157,7 +157,7 @@ class OptionsBuilder
 
   /**
    * Set Restricted Package Name
-   * @param int $restrictedPackageName
+   * @param string $restrictedPackageName
    * @return OptionsBuilder
    */
   public function setRestrictedPackageName($restrictedPackageName)

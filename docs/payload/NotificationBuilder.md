@@ -86,14 +86,14 @@ $notifyBuilder->getBodyLockey();
 
 /**
  * Set body Loc Args 
- * @param string $bodyLocArgs
+ * @param array $bodyLocArgs
  * @return NotificationBuilder
  */
 $notifyBuilder->setBodyLocArgs($bodyLocArgs);
 
 /**
  * Get body Loc Args
- * @return string
+ * @return array
  */
 $notifyBuilder->getBodyLocArgs();
 
@@ -112,14 +112,14 @@ $notifyBuilder->getTitleLockey();
 
 /**
  * Set title Loc Args 
- * @param string $titleLocArgs
+ * @param array $titleLocArgs
  * @return NotificationBuilder
  */
 $notifyBuilder->setTitleLocArgs($bodyLotitleLocArgscArgs);
 
 /**
  * Get title Loc Args
- * @return string
+ * @return array
  */
 $notifyBuilder->getTitleLocArgs();
 
