@@ -75,13 +75,13 @@ trait HasFcm
 
   public function fcmCreateOrUpdate($token, $platform = null, $locale = null)
   {
-    $fcmToken = $this->fcmTokens->where("token", $token)->where("model_type", get_class($this))->first();
+    $fcmToken = FcmToken::where("token", $token)->first();
     if (!$fcmToken) {
       $fcmToken = new FcmToken;
-      $fcmToken->model_type = get_class($this);
-      $fcmToken->model_id = $this->id;
       $fcmToken->token = $token;
     }
+    $fcmToken->model_type = get_class($this);
+    $fcmToken->model_id = $this->id;
     $fcmToken->platform = $platform;
     $fcmToken->locale = $locale;
     $fcmToken->save();
