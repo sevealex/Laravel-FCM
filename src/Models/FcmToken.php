@@ -97,10 +97,10 @@ class FcmToken extends Model
         })->first();
         if (!$fcmToken) {
             $fcmToken = new static;
-            $fcmToken->model_type = $model_type;
-            $fcmToken->model_id = $model_id;
             $fcmToken->token = $token;
         }
+        $fcmToken->model_type = $model_type;
+        $fcmToken->model_id = $model_id;
         $fcmToken->platform = $platform;
         $fcmToken->locale = $locale;
         $fcmToken->save();
