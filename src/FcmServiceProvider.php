@@ -13,6 +13,7 @@ class FcmServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         $this->app->bind('prgayman.fcm', function () {
             return new Fcm();
         });
@@ -25,12 +26,11 @@ class FcmServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         $this->fcmPublishes();
         $this->loadMigrationsFrom(__DIR__ . '/Database/migrations');
     }
 
-    private function fcmPublishes()
+    public function fcmPublishes()
     {
         $publishes = [
             "config" =>         [

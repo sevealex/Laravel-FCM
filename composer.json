@@ -10,22 +10,27 @@
         "push notification",
         "notification"
     ],
+    "homepage": "https://github.com/prgayman/laravel-fcm",
     "type": "library",
     "license": "MIT",
     "authors": [{
         "name": "Ayman Alaiwah",
-        "email": "aymanalaiwah.dev@gmail.com"
+        "email": "aymanalaiwah.dev@gmail.com",
+        "role": "Developer"
     }],
     "autoload": {
         "psr-4": {
-            "Prgayman\\Fcm\\": "src"
+            "Prgayman\\Fcm\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Prgayman\\Fcm\\FcmServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "FCM": "Prgayman\\Fcm\\Facades\\Fcm"
+            }
         }
     },
     "minimum-stability": "dev",

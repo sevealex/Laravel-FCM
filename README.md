@@ -33,7 +33,7 @@ Add the facade aliases in the same file:
 ```php
 'aliases' => [
 
-  'PFCM' => Prgayman\Fcm\Facades\Fcm::class,
+  'FCM' => Prgayman\Fcm\Facades\Fcm::class,
 
 ]
 ```
