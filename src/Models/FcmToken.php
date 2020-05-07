@@ -91,9 +91,9 @@ class FcmToken extends Model
     public static function createOrUpdate($token, $model_type = null, $model_id = null, $platform = null, $locale = null)
     {
         $fcmToken = static::where("token", $token)->where(function ($query) use ($model_type) {
-            if ($model_type) {
-                $query->where("model_type", $model_type);
-            }
+            // if ($model_type) {
+            //     $query->where("model_type", $model_type);
+            // }
         })->first();
         if (!$fcmToken) {
             $fcmToken = new static;

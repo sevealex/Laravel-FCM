@@ -148,7 +148,7 @@ $user->getWebTokens();
  *
  * @return Prgayman\Fcm\Models\FcmToken
  */
-$fcmToken = $user->createOrUpdate($token, "android", app()->getLocale()));
+$fcmToken = $user->fcmCreateOrUpdate($token, "android", app()->getLocale()));
 
 ```
 
