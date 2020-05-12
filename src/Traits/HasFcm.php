@@ -21,7 +21,8 @@ trait HasFcm
    */
   public function getFcmTokens($locale = null)
   {
-    return $this->fcmTokens->where(function ($query) use ($locale) {
+
+    return $this->fcmTokens()->where(function ($query) use ($locale) {
       if ($locale) {
         $query->where("locale", $locale);
       }
@@ -36,7 +37,7 @@ trait HasFcm
    */
   public function getFcmIosTokens($locale = null)
   {
-    return $this->fcmTokens->where(function ($query) use ($locale) {
+    return $this->fcmTokens()->where(function ($query) use ($locale) {
       if ($locale) {
         $query->where("locale", $locale);
       }
@@ -51,7 +52,7 @@ trait HasFcm
    */
   public function getFcmAndroidTokens($locale = null)
   {
-    return $this->fcmTokens->where(function ($query) use ($locale) {
+    return $this->fcmTokens()->where(function ($query) use ($locale) {
       if ($locale) {
         $query->where("locale", $locale);
       }
@@ -66,7 +67,7 @@ trait HasFcm
    */
   public function getFcmWebTokens($locale = null)
   {
-    return $this->fcmTokens->where(function ($query) use ($locale) {
+    return $this->fcmTokens()->where(function ($query) use ($locale) {
       if ($locale) {
         $query->where("locale", $locale);
       }
