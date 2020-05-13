@@ -23,7 +23,7 @@ class FcmToken extends Model
      * @return array
      */
 
-    public function getTokens($locale = null)
+    public static function getTokens($locale = null)
     {
 
         return static::where(function ($query) use ($locale) {
@@ -39,7 +39,7 @@ class FcmToken extends Model
      * 
      * @return array
      */
-    public function getIosTokens($locale = null)
+    public static function getIosTokens($locale = null)
     {
         return static::where(function ($query) use ($locale) {
             if ($locale) {
@@ -54,7 +54,7 @@ class FcmToken extends Model
      * 
      * @return array
      */
-    public function getAndroidTokens($locale = null)
+    public static function getAndroidTokens($locale = null)
     {
         return static::where(function ($query) use ($locale) {
             if ($locale) {
@@ -69,7 +69,7 @@ class FcmToken extends Model
      * 
      * @return array
      */
-    public function getWebTokens($locale = null)
+    public static function getWebTokens($locale = null)
     {
         return static::where(function ($query) use ($locale) {
             if ($locale) {
