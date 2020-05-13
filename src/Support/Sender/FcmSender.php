@@ -30,11 +30,6 @@ class FcmSender extends HttpSender
     Data $data = null
   ) {
 
-    if (!$to) {
-      throw new Exception('to is not valid must by array or string');
-    }
-
-
     $response = null;
     if (is_array($to)) {
       foreach ($this->partialTokens($to) as $tokens) {
