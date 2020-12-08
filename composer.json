@@ -1,7 +1,7 @@
 {
     "name": "sevealex/laravel-fcm",
     "description": "Laravel package send notify using firebase",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "keywords": [
         "prgayman",
         "laravel",
