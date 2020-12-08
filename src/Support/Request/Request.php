@@ -45,9 +45,10 @@ class Request extends BaseRequest
     $to,
     Options $options = null,
     Notification $notification = null,
-    Data $data = null
+    Data $data = null,
+    $config = null
   ) {
-    parent::__construct();
+    parent::__construct($config);
     $this->to = $to;
     $this->notification = $notification;
     $this->options = $options;
