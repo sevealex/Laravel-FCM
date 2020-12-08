@@ -12,18 +12,18 @@ abstract class BaseRequest
   protected $config;
 
 
-  public function __construct()
+  public function __construct($config = [])
   {
-    $this->loadServerConfig();
+    $this->loadServerConfig($config);
   }
 
   /**
    * load server config from config/fcm.php and set to $this->config
    * @return void
    */
-  private function loadServerConfig()
+  private function loadServerConfig($config)
   {
-    $this->config = app('config')->get("fcm");
+    $this->config = array_merge(app('config')->get("fcm"), $config);
   }
 
   /**

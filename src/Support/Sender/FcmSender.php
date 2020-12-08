@@ -27,13 +27,14 @@ class FcmSender extends HttpSender
     $to,
     Options $options = null,
     Notification $notification = null,
-    Data $data = null
+    Data $data = null,
+    $config = []
   ) {
 
     $response = null;
     if (is_array($to)) {
       foreach ($this->partialTokens($to) as $tokens) {
-        $responsePartial = new DownstreamResponse($this->httpRequest(new Request($tokens, $options, $notification, $data)), $tokens);
+        $responsePartial = new DownstreamResponse($this->httpRequest(new Request($tokens, $options, $notification, $data, $config)), $tokens);
         if (!$response) {
           $response = $responsePartial;
         } else {
@@ -41,7 +42,7 @@ class FcmSender extends HttpSender
         }
       }
     } else {
-      $response = new DownstreamResponse($this->httpRequest(new Request($to, $options, $notification, $data)), $to);
+      $response = new DownstreamResponse($this->httpRequest(new Request($to, $options, $notification, $data, $config)), $to);
     }
     return $response;
   }

@@ -19,9 +19,9 @@ class Fcm extends FcmSender
    * 
    * @return Prgayman\Fcm\Support\Response\DownstreamResponse
    */
-  public function sendNotification($to, Notification $notification, Options $options = null)
+  public function sendNotification($to, Notification $notification, Options $options = null, $config = [])
   {
-    return $this->send($to, $options, $notification, null);
+    return $this->send($to, $options, $notification, null, $config);
   }
 
   /**
@@ -34,9 +34,9 @@ class Fcm extends FcmSender
    * 
    * @return Prgayman\Fcm\Support\Response\DownstreamResponse
    */
-  public function sendNotificationWithData($to, Notification $notification, Data $data, Options $options = null)
+  public function sendNotificationWithData($to, Notification $notification, Data $data, Options $options = null, $config = [])
   {
-    return $this->send($to, $options, $notification, $data);
+    return $this->send($to, $options, $notification, $data, $config);
   }
 
 
@@ -49,8 +49,8 @@ class Fcm extends FcmSender
    * 
    * @return Prgayman\Fcm\Support\Response\DownstreamResponse
    */
-  public function sendhData($to,  Data $data, Options $options = null)
+  public function sendhData($to,  Data $data, Options $options = null, $config = [])
   {
-    return $this->send($to, $options, null, $data);
+    return $this->send($to, $options, null, $data, $config);
   }
 }
